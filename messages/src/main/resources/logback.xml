@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <property resource="${log.profile}.properties" />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+    </layout>
+  </appender>
+   
+  <appender name="log-common" class="ch.qos.logback.core.FileAppender">
+		<file>${LOG_COMMON_PATH}common.log</file>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+  </appender>  
+  
+  <appender name="log-messages" class="ch.qos.logback.core.FileAppender">
+		<file>${LOG_MESSAGES_PATH}messages.log</file>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+  </appender>   
+   
+  <logger name="log-messages" level="${LOG_MESSAGES_LEVEL}" additivity="false">
+		<appender-ref ref="log-messages" />
+  </logger> 
+ 
+  <root level="${LOG_COMMON_LEVEL}">
+    <appender-ref ref="log-common" />
+  </root>
+
+</configuration>
