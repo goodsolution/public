@@ -1,0 +1,12 @@
+create table messages (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  type CHAR(1) NOT NULL,
+  status CHAR(1) NOT NULL,
+  title VARCHAR(1024) NOT NULL,
+  address VARCHAR(1024) NOT NULL,
+  body TEXT,
+  version INT,
+  create_date DATETIME NOT NULL,
+  modification_date DATETIME,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
